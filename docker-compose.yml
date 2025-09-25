@@ -1,8 +1,6 @@
 services:
-  mangadex-web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  mangadex-web: 
+    image: ghcr.io/oricat101/mangadex-downloader-web:latest
     container_name: mangadex-downloader-web
     ports:
       - "5000:5000"

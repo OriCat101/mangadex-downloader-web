@@ -1,5 +1,6 @@
 # Use Python 3.11 slim image as base
 FROM python:3.11-slim
+LABEL org.opencontainers.image.source=https://github.com/OriCat101/mangadex-downloader-web
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
