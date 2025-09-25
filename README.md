@@ -1,240 +1,202 @@
-# MangaDx Downloader Web UI
+# MangaDex Downloader Web
 
-A modern, user-friendly web interface for the [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) command-line tool. This Flask-based web application provides an intuitive way to download manga from MangaDx with real-time progress tracking and file management.
 
-## Features
+## ✨ Features
 
-- **Easy-to-use web interface** - No command-line knowledge required
-- **Real-time download progress** - Watch your downloads progress with live updates
-- **Multiple output formats** - Support for Raw Images, PDF, EPUB, CBZ, and CB7
-- **Download management** - View download history and manage completed downloads
-- **File browser** - Browse and download your completed manga files
-- **Multi-language support** - Download manga in various languages
-- **Chapter range selection** - Download specific chapter ranges
-- **Responsive design** - Works on desktop, tablet, and mobile devices
+### Core Functionality
+- **Real-time Progress Tracking** - Live download progress with detailed logging
+- **Multiple Output Formats** - Raw images, PDF, EPUB, CBZ, and CB7 support
+- **Chapter Range Selection** - Download specific chapters or complete series
+- **Multi-language Support** - Download manga in any available language
 
-## Screenshots
+## 🚀 Quick Start
 
-### Main Download Interface
-Clean and intuitive interface for starting downloads with various options.
+### Docker (Recommended)
 
-### Download Progress Tracking
-Real-time progress updates with detailed logging output.
-
-### File Management
-Browse and download your completed manga files.
-
-## Prerequisites
-
-- Python 3.7 or higher
-- `mangadex-downloader` command-line tool installed and available in PATH
-
-## Installation & Usage
-
-### 🐳 Docker (Recommended)
-
-The easiest way to run the application is using Docker:
-
-1. **Clone the repository:**
+1. **Clone and start:**
    ```bash
    git clone <repository-url>
    cd maangadx-dl-web
-   ```
-
-2. **Quick start with Docker Compose:**
-   ```bash
-   # Start the application
-   ./docker-deploy.sh start
-   
-   # Or use docker-compose directly
    docker-compose up -d
    ```
 
-3. **Access the web interface:**
+2. **Access the application:**
    ```
    http://localhost:5000
    ```
 
-#### Docker Commands
+That's it! The application will be running with all dependencies included.
 
-```bash
-# Development mode (with hot reload)
-./docker-deploy.sh dev
+### Manual Installation
 
-# View logs
-./docker-deploy.sh logs
-
-# Stop the application
-./docker-deploy.sh stop
-
-# Clean up everything
-./docker-deploy.sh clean
-```
-
-### 🐍 Manual Installation
-
-1. **Install mangadex-downloader first:**
+1. **Prerequisites:**
    ```bash
-   pip install mangadex-downloader
-   ```
-
-2. **Clone or download this repository:**
-   ```bash
-   git clone <repository-url>
-   cd maangadx-dl-web
-   ```
-
-3. **Install Python dependencies:**
-   ```bash
+   # Install Python dependencies
+   pip install mangadx-downloader
    pip install -r requirements.txt
    ```
 
-4. **Start the web server:**
+2. **Run the application:**
    ```bash
    python app.py
    ```
 
-5. **Open your web browser and navigate to:**
-   ```
-   http://localhost:5000
-   ```
+## 📖 Usage Guide
 
-### 📱 How to Use
+### Basic Download
+1. Open the web interface at `http://localhost:5000`
+2. Paste a MangaDex URL into the input field
+3. Select your preferred format and language
+4. Click "Start Download" and monitor progress in real-time
 
-1. **Start downloading:**
-   - Paste a MangaDx URL into the input field
-   - Choose your preferred format and options
-   - Click "Start Download" and watch the progress
+### Advanced Options
+- **Format Selection**: Choose between Raw Images, PDF, EPUB, CBZ, or CB7
+- **Language Filter**: Download manga in specific languages
+- **Chapter Ranges**: Use syntax like `1-10` or `5,7,9-12`
+- **Quality Settings**: Select image quality preferences
 
-## Configuration
-
-### Download Directory
-By default, files are downloaded to the `downloads/` directory in the project folder. You can modify this by changing the `DOWNLOAD_DIR` variable in `app.py`.
-
-### Supported Formats
-- **Raw Images** - Individual image files
-- **PDF** - Portable Document Format
-- **EPUB** - Electronic Publication format
-- **CBZ** - Comic Book Archive (ZIP)
-- **CB7** - Comic Book Archive (7-Zip)
-
-### Supported Languages
-The web UI supports all languages available in mangadex-downloader, including:
-- English (en)
-- Japanese (ja)
-- Spanish (es)
-- French (fr)
-- German (de)
-- Italian (it)
-- Portuguese (pt)
-- Korean (ko)
-- Chinese (zh)
+### Managing Downloads
+- **View History**: See all past downloads with status and timestamps
+- **Browse Files**: Navigate downloaded content with built-in file browser
+- **Re-download**: Easily retry failed downloads
+- **API Access**: Use REST endpoints for automation
 
 ## 🐳 Docker Configuration
 
 ### Environment Variables
 
-Copy `.env.example` to `.env` and customize:
-
+Create a `.env` file from the example:
 ```bash
 cp .env.example .env
 ```
 
-Key variables:
-- `FLASK_ENV` - Set to `production` or `development`
-- `SECRET_KEY` - Change this for security
-- `DOWNLOAD_DIR` - Directory for downloaded files
-
-### Production Deployment
-
-For production with nginx reverse proxy:
-
-```bash
-# Start with nginx proxy
-docker-compose --profile production up -d
-
-# Access via nginx (port 80)
-http://localhost
+Key configuration options:
+```env
+FLASK_ENV=production
+FLASK_HOST=0.0.0.0
+FLASK_PORT=5000
+SECRET_KEY=your-secret-key-here
+DOWNLOAD_DIR=/app/downloads
 ```
 
-### Volume Mounts
+### Docker Compose Profiles
 
-- `./downloads:/app/downloads` - Downloaded files
-- `downloads_data` - Persistent volume for downloads
-
-## API Endpoints
-
-The web UI also provides REST API endpoints:
-
-- `POST /download` - Start a new download
-- `GET /status/<download_id>` - Get download status
-- `GET /api/downloads` - List all downloads
-- `GET /files` - List downloaded files
-
-## Troubleshooting
-
-### "mangadex-dl command not found"
-Make sure mangadex-downloader is installed and available in your system PATH:
+**Development with hot reload:**
 ```bash
-pip install mangadex-downloader
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
-### Downloads failing
-1. Check that the MangaDx URL is valid
-2. Ensure you have internet connectivity
-3. Some manga may require authentication - this feature may be added in future versions
+**Production deployment:**
+```bash
+docker-compose up -d
+```
 
-### Permission errors
-Ensure the web application has write permissions to the download directory.
+### Volume Management
 
-## Development
+The application uses persistent volumes:
+- `./downloads:/app/downloads` - Downloaded manga files
+- Configuration persists across container restarts
+
+## 🔧 Configuration
+
+### Download Directory
+By default, files are saved to `./downloads/`. Modify this in `app.py`:
+```python
+DOWNLOAD_DIR = os.path.join(os.getcwd(), 'downloads')
+```
+
+### Supported Formats
+| Format | Description | Use Case |
+|--------|-------------|----------|
+| Raw Images | Individual PNG/JPG files | Maximum quality, custom readers |
+| PDF | Portable Document Format | Universal compatibility |
+| EPUB | E-book format | E-readers, mobile apps |
+| CBZ | Comic Book ZIP | Comic readers |
+| CB7 | Comic Book 7-Zip | Better compression |
+
+### Language Codes
+Common language options:
+- `en` - English
+- `ja` - Japanese  
+- `es` - Spanish
+- `fr` - French
+- `de` - German
+- `ko` - Korean
+- `zh` - Chinese
+- `pt` - Portuguese
+
+## 🔌 API Reference
+
+### Download Management
+```bash
+# Start a new download
+POST /download
+Content-Type: application/json
+{
+  "url": "https://mangadx.org/title/...",
+  "format": "pdf",
+  "language": "en"
+}
+
+# Check download status
+GET /status/<download_id>
+
+# List all downloads
+GET /api/downloads
+```
+
+### File Management
+```bash
+# List downloaded files
+GET /files
+
+# Download a specific file
+GET /files/<filename>
+```
+
+## 🛠️ Development
 
 ### Project Structure
 ```
-maangadex-dl-web/
-├── app.py                 # Main Flask application
+maangadx-dl-web/
+├── app.py                 # Flask application & API
 ├── requirements.txt       # Python dependencies
-├── templates/            # HTML templates
-│   ├── base.html         # Base template
-│   ├── index.html        # Main download page
+├── Dockerfile            # Container configuration
+├── docker-compose.yml    # Docker orchestration
+├── templates/            # Jinja2 HTML templates
+│   ├── base.html         # Base layout
+│   ├── index.html        # Main download interface
 │   ├── downloads.html    # Download history
-│   ├── files.html        # File browser
-│   └── settings.html     # Settings page
-├── static/               # Static assets
-│   ├── css/
-│   │   └── style.css    # Custom styles
-│   └── js/
-│       └── app.js       # JavaScript functionality
-└── downloads/           # Downloaded files (created automatically)
+│   └── settings.html     # Configuration
+├── static/               # Frontend assets
+│   ├── css/style.css    # Styling
+│   └── js/app.js        # JavaScript functionality
+└── downloads/           # Downloaded content
 ```
 
-### Running in Development Mode
-```bash
-export FLASK_ENV=development
-python app.py
-```
+## 📋 Requirements
 
-### Running in Production
-For production deployment, consider using a WSGI server like Gunicorn:
-```bash
-pip install gunicorn
-gunicorn -w 4 -b 0.0.0.0:5000 app:app
-```
+### System Requirements
+- **Python**: 3.7 or higher
+- **RAM**: 512MB minimum, 1GB recommended
+- **Storage**: Varies by manga collection size
+- **Network**: Internet connection for downloads
 
-## Contributing
+### Dependencies
+- **Flask**: Web framework
+- **mangadx-downloader**: Core download functionality
+- **requests**: HTTP client library
 
-Contributions are welcome! Please feel free to submit issues and pull requests.
+## 📝 License
 
-## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the original [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) project for more details.
+## 🙏 Acknowledgments
 
-## Disclaimer
+- **[mansuf](https://github.com/mansuf)** - Creator of the excellent [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) tool
 
-This web UI is not affiliated with MangaDx or the original mangadex-downloader project. It's an independent frontend interface for the command-line tool.
+## ⚠️ Disclaimr
 
-## Acknowledgments
+This project is an independent web interface for the mangadx-downloader tool. It is not affiliated with or endorsed by MangaDex. Please respect MangaDex's terms of service.
 
-- [mansuf](https://github.com/mansuf) for the excellent [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) tool
-- Bootstrap team for the UI framework
-- Flask team for the web framework
+---
