@@ -1,11 +1,11 @@
 @echo off
 echo Starting MangaDx Downloader Web UI...
 
-REM Check if mangadx-downloader is installed
+REM Check if mangadex-downloader is installed
 mangadx-dl --version >nul 2>&1
 if errorlevel 1 (
-    echo Error: mangadx-downloader is not installed or not in PATH
-    echo Please install it with: pip install mangadx-downloader
+    echo Error: mangadex-downloader is not installed or not in PATH
+    echo Please install it with: pip install mangadex-downloader
     pause
     exit /b 1
 )

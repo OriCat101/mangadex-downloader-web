@@ -4,10 +4,10 @@
 
 echo "Starting MangaDx Downloader Web UI..."
 
-# Check if mangadx-downloader is installed
+# Check if mangadex-downloader is installed
 if ! command -v mangadx-dl &> /dev/null; then
-    echo "Error: mangadx-downloader is not installed or not in PATH"
-    echo "Please install it with: pip install mangadx-downloader"
+    echo "Error: mangadex-downloader is not installed or not in PATH"
+    echo "Please install it with: pip install mangadex-downloader"
     exit 1
 fi
 

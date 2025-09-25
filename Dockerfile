@@ -25,8 +25,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
-# Install mangadx-downloader with optional dependencies
-RUN pip install --no-cache-dir mangadx-downloader[optional]
+# Install mangadex-downloader with optional dependencies
+RUN pip install --no-cache-dir mangadex-downloader[optional]
 
 # Copy application code
 COPY . .

@@ -9,7 +9,7 @@ import queue
 import uuid
 
 app = Flask(__name__)
-app.secret_key = 'mangadx-downloader-web-ui-secret-key'
+app.secret_key = 'mangadex-downloader-web-ui-secret-key'
 
 # Configuration
 DOWNLOAD_DIR = os.path.join(os.getcwd(), 'downloads')

@@ -1,6 +1,6 @@
 # MangaDx Downloader Web UI
 
-A modern, user-friendly web interface for the [mangadx-downloader](https://github.com/mansuf/mangadx-downloader) command-line tool. This Flask-based web application provides an intuitive way to download manga from MangaDx with real-time progress tracking and file management.
+A modern, user-friendly web interface for the [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) command-line tool. This Flask-based web application provides an intuitive way to download manga from MangaDx with real-time progress tracking and file management.
 
 ## Features
 
@@ -27,7 +27,7 @@ Browse and download your completed manga files.
 ## Prerequisites
 
 - Python 3.7 or higher
-- `mangadx-downloader` command-line tool installed and available in PATH
+- `mangadex-downloader` command-line tool installed and available in PATH
 
 ## Installation & Usage
 
@@ -73,9 +73,9 @@ The easiest way to run the application is using Docker:
 
 ### 🐍 Manual Installation
 
-1. **Install mangadx-downloader first:**
+1. **Install mangadex-downloader first:**
    ```bash
-   pip install mangadx-downloader
+   pip install mangadex-downloader
    ```
 
 2. **Clone or download this repository:**
@@ -119,7 +119,7 @@ By default, files are downloaded to the `downloads/` directory in the project fo
 - **CB7** - Comic Book Archive (7-Zip)
 
 ### Supported Languages
-The web UI supports all languages available in mangadx-downloader, including:
+The web UI supports all languages available in mangadex-downloader, including:
 - English (en)
 - Japanese (ja)
 - Spanish (es)
@@ -174,9 +174,9 @@ The web UI also provides REST API endpoints:
 ## Troubleshooting
 
 ### "mangadx-dl command not found"
-Make sure mangadx-downloader is installed and available in your system PATH:
+Make sure mangadex-downloader is installed and available in your system PATH:
 ```bash
-pip install mangadx-downloader
+pip install mangadex-downloader
 ```
 
 ### Downloads failing
@@ -227,14 +227,14 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 
 ## License
 
-This project is licensed under the MIT License - see the original [mangadx-downloader](https://github.com/mansuf/mangadx-downloader) project for more details.
+This project is licensed under the MIT License - see the original [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) project for more details.
 
 ## Disclaimer
 
-This web UI is not affiliated with MangaDx or the original mangadx-downloader project. It's an independent frontend interface for the command-line tool.
+This web UI is not affiliated with MangaDx or the original mangadex-downloader project. It's an independent frontend interface for the command-line tool.
 
 ## Acknowledgments
 
-- [mansuf](https://github.com/mansuf) for the excellent [mangadx-downloader](https://github.com/mansuf/mangadx-downloader) tool
+- [mansuf](https://github.com/mansuf) for the excellent [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) tool
 - Bootstrap team for the UI framework
 - Flask team for the web framework
