@@ -1,8 +1,8 @@
 # MangaDex Downloader Web
-
+> [!CAUTION]
+> This entire application was AI generated to test opencode so it may very well have issues I'm unaware of
 
 ## ✨ Features
-
 ### Core Functionality
 - **Real-time Progress Tracking** - Live download progress with detailed logging
 - **Multiple Output Formats** - Raw images, PDF, EPUB, CBZ, and CB7 support
@@ -10,9 +10,7 @@
 - **Multi-language Support** - Download manga in any available language
 
 ## 🚀 Quick Start
-
 ### Docker (Recommended)
-
 1. **Clone and start:**
    ```bash
    git clone <repository-url>
@@ -28,7 +26,6 @@
 That's it! The application will be running with all dependencies included.
 
 ### Manual Installation
-
 1. **Prerequisites:**
    ```bash
    # Install Python dependencies
@@ -42,7 +39,6 @@ That's it! The application will be running with all dependencies included.
    ```
 
 ## 📖 Usage Guide
-
 ### Basic Download
 1. Open the web interface at `http://localhost:5000`
 2. Paste a MangaDex URL into the input field
@@ -62,9 +58,7 @@ That's it! The application will be running with all dependencies included.
 - **API Access**: Use REST endpoints for automation
 
 ## 🐳 Docker Configuration
-
 ### Environment Variables
-
 Create a `.env` file from the example:
 ```bash
 cp .env.example .env
@@ -75,12 +69,10 @@ Key configuration options:
 FLASK_ENV=production
 FLASK_HOST=0.0.0.0
 FLASK_PORT=5000
-SECRET_KEY=your-secret-key-here
-DOWNLOAD_DIR=/app/downloads
+SECRET_KEY=your-secret-key-here (optional)
 ```
 
 ### Docker Compose Profiles
-
 **Development with hot reload:**
 ```bash
 docker-compose -f docker-compose.dev.yml up -d
@@ -91,14 +83,7 @@ docker-compose -f docker-compose.dev.yml up -d
 docker-compose up -d
 ```
 
-### Volume Management
-
-The application uses persistent volumes:
-- `./downloads:/app/downloads` - Downloaded manga files
-- Configuration persists across container restarts
-
 ## 🔧 Configuration
-
 ### Download Directory
 By default, files are saved to `./downloads/`. Modify this in `app.py`:
 ```python
@@ -126,7 +111,6 @@ Common language options:
 - `pt` - Portuguese
 
 ## 🛠️ Development
-
 ### Project Structure
 ```
 maangadx-dl-web/
