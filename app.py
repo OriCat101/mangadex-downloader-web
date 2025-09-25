@@ -54,7 +54,7 @@ class DownloadManager:
             download_info['status'] = 'downloading'
             
             # Build mangadex-dl command
-            cmd = ['mangadx-dl']
+            cmd = ['mangadex-dl']
             cmd.append(url)
             cmd.extend(['--path', DOWNLOAD_DIR])
             
@@ -131,8 +131,8 @@ def start_download():
         return jsonify({'error': 'URL is required'}), 400
     
     # Validate URL (basic check)
-    if 'mangadx.org' not in url:
-        return jsonify({'error': 'Please provide a valid MangaDx URL'}), 400
+    if 'mangadex.org' not in url:
+        return jsonify({'error': 'Please provide a valid MangaDex URL'}), 400
     
     options = {
         'format': data.get('format', 'raw'),

@@ -173,7 +173,7 @@ The web UI also provides REST API endpoints:
 
 ## Troubleshooting
 
-### "mangadx-dl command not found"
+### "mangadex-dl command not found"
 Make sure mangadex-downloader is installed and available in your system PATH:
 ```bash
 pip install mangadex-downloader
