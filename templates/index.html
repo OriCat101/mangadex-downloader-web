@@ -25,11 +25,31 @@
                             <div class="mb-3">
                                 <label for="format" class="form-label">Output Format</label>
                                 <select class="form-select" id="format" name="format">
-                                    <option value="raw">Raw Images</option>
-                                    <option value="epub">EPUB</option>
-                                    <option value="pdf">PDF</option>
-                                    <option value="cbz">CBZ (Comic Book Archive)</option>
-                                    <option value="cb7">CB7 (7-Zip Archive)</option>
+                                    <optgroup label="Raw Images">
+                                        <option value="raw">Raw - Separate chapter folders</option>
+                                        <option value="raw-volume">Raw Volume - Grouped by volume</option>
+                                        <option value="raw-single">Raw Single - All in one folder</option>
+                                    </optgroup>
+                                    <optgroup label="PDF">
+                                        <option value="pdf">PDF - Separate chapter files</option>
+                                        <option value="pdf-volume">PDF Volume - Grouped by volume</option>
+                                        <option value="pdf-single">PDF Single - All in one file</option>
+                                    </optgroup>
+                                    <optgroup label="Comic Book Archive (CBZ)">
+                                        <option value="cbz">CBZ - Separate chapter files</option>
+                                        <option value="cbz-volume">CBZ Volume - Grouped by volume</option>
+                                        <option value="cbz-single">CBZ Single - All in one file</option>
+                                    </optgroup>
+                                    <optgroup label="Comic Book Archive (CB7)">
+                                        <option value="cb7">CB7 - Separate chapter files</option>
+                                        <option value="cb7-volume">CB7 Volume - Grouped by volume</option>
+                                        <option value="cb7-single">CB7 Single - All in one file</option>
+                                    </optgroup>
+                                    <optgroup label="EPUB">
+                                        <option value="epub">EPUB - Separate chapter files</option>
+                                        <option value="epub-volume">EPUB Volume - Grouped by volume</option>
+                                        <option value="epub-single">EPUB Single - All in one file</option>
+                                    </optgroup>
                                 </select>
                             </div>
                         </div>
