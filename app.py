@@ -7,9 +7,10 @@ import time
 from datetime import datetime
 import queue
 import uuid
+import secrets
 
 app = Flask(__name__)
-app.secret_key = 'mangadex-downloader-web-ui-secret-key'
+app.secret_key = os.environ.get('SECRET_KEY') or secrets.token_hex(32)
 
 # Configuration
 DOWNLOAD_DIR = os.path.join(os.getcwd(), 'downloads')

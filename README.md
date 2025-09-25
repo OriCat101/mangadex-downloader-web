@@ -125,35 +125,6 @@ Common language options:
 - `zh` - Chinese
 - `pt` - Portuguese
 
-## 🔌 API Reference
-
-### Download Management
-```bash
-# Start a new download
-POST /download
-Content-Type: application/json
-{
-  "url": "https://mangadx.org/title/...",
-  "format": "pdf",
-  "language": "en"
-}
-
-# Check download status
-GET /status/<download_id>
-
-# List all downloads
-GET /api/downloads
-```
-
-### File Management
-```bash
-# List downloaded files
-GET /files
-
-# Download a specific file
-GET /files/<filename>
-```
-
 ## 🛠️ Development
 
 ### Project Structure
@@ -174,29 +145,18 @@ maangadx-dl-web/
 └── downloads/           # Downloaded content
 ```
 
-## 📋 Requirements
-
-### System Requirements
-- **Python**: 3.7 or higher
-- **RAM**: 512MB minimum, 1GB recommended
-- **Storage**: Varies by manga collection size
-- **Network**: Internet connection for downloads
-
-### Dependencies
+## Dependencies
 - **Flask**: Web framework
 - **mangadx-downloader**: Core download functionality
 - **requests**: HTTP client library
 
 ## 📝 License
-
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
-
 - **[mansuf](https://github.com/mansuf)** - Creator of the excellent [mangadex-downloader](https://github.com/mansuf/mangadex-downloader) tool
 
 ## ⚠️ Disclaimr
-
 This project is an independent web interface for the mangadx-downloader tool. It is not affiliated with or endorsed by MangaDex. Please respect MangaDex's terms of service.
 
 ---
