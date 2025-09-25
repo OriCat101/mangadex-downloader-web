@@ -191,36 +191,7 @@ def api_downloads():
     downloads.sort(key=lambda x: x['started_at'], reverse=True)
     return jsonify(downloads)
 
-@app.route('/files')
-def list_files():
-    files = []
-    for root, dirs, filenames in os.walk(DOWNLOAD_DIR):
-        for filename in filenames:
-            filepath = os.path.join(root, filename)
-            rel_path = os.path.relpath(filepath, DOWNLOAD_DIR)
-            stat = os.stat(filepath)
-            files.append({
-                'name': filename,
-                'path': rel_path,
-                'size': stat.st_size,
-                'modified': datetime.fromtimestamp(stat.st_mtime).isoformat()
-            })
-    
-    files.sort(key=lambda x: x['modified'], reverse=True)
-    return render_template('files.html', files=files)
 
-@app.route('/download_file/<path:filename>')
-def download_file(filename):
-    try:
-        file_path = os.path.join(DOWNLOAD_DIR, filename)
-        if not os.path.exists(file_path):
-            flash('File not found', 'error')
-            return redirect(url_for('list_files'))
-        
-        return send_file(file_path, as_attachment=True)
-    except Exception as e:
-        flash(f'Error downloading file: {str(e)}', 'error')
-        return redirect(url_for('list_files'))
 
 @app.route('/settings')
 def settings():
