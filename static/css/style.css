@@ -1,0 +1,120 @@
+/* Custom styles for MangaDx Downloader Web UI */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.progress {
+    height: 20px;
+}
+
+.progress-bar {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.table th {
+    border-top: none;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+}
+
+.alert {
+    border: none;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.navbar-nav .nav-link {
+    margin: 0 0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.text-truncate-custom {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+.download-card {
+    border-left: 4px solid #0d6efd;
+}
+
+.download-card.completed {
+    border-left-color: #198754;
+}
+
+.download-card.failed {
+    border-left-color: #dc3545;
+}
+
+.file-icon {
+    width: 20px;
+    text-align: center;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Dark theme support for code blocks */
+.bg-dark pre {
+    color: #f8f9fa;
+    background-color: #212529;
+    margin: 0;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 0.125rem solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 0.125rem solid #007bff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

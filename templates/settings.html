@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - MangaDx Downloader Web UI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="mb-4"><i class="fas fa-cog"></i> Settings</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Download Configuration</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Download Directory</h6>
+                        <p class="text-muted">{{ download_dir }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Available Formats</h6>
+                        <ul class="list-unstyled text-muted">
+                            <li><i class="fas fa-check text-success"></i> Raw Images</li>
+                            <li><i class="fas fa-check text-success"></i> PDF</li>
+                            <li><i class="fas fa-check text-success"></i> EPUB</li>
+                            <li><i class="fas fa-check text-success"></i> CBZ</li>
+                            <li><i class="fas fa-check text-success"></i> CB7</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">MangaDx Downloader Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Supported URLs</h6>
+                        <ul class="text-muted">
+                            <li>Manga pages</li>
+                            <li>Chapter pages</li>
+                            <li>User lists</li>
+                            <li>Search results</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Features</h6>
+                        <ul class="text-muted">
+                            <li>Multiple language support</li>
+                            <li>Chapter range selection</li>
+                            <li>Format conversion</li>
+                            <li>Progress tracking</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <h6>Command Line Tool</h6>
+                <p class="text-muted">
+                    This web UI is powered by the 
+                    <a href="https://github.com/mansuf/mangadx-downloader" target="_blank">mangadx-downloader</a> 
+                    command-line tool. Make sure it's installed and available in your system PATH.
+                </p>
+                
+                <div class="alert alert-info">
+                    <h6 class="alert-heading">
+                        <i class="fas fa-info-circle"></i> Installation
+                    </h6>
+                    <p class="mb-0">
+                        To install mangadx-downloader: <code>pip install mangadx-downloader</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">System Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Web UI Version</h6>
+                        <p class="text-muted">1.0.0</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Framework</h6>
+                        <p class="text-muted">Flask + Bootstrap 5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+version: '3.8'
+
+# Simple Docker Compose for development
+services:
+  mangadx-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mangadx-downloader-web-dev
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    volumes:
+      - ./downloads:/app/downloads
+      - .:/app  # Mount source code for development
+    restart: unless-stopped
+    networks:
+      - mangadx-network
+
+networks:
+  mangadx-network:
+    driver: bridge
