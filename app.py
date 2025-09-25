@@ -56,7 +56,12 @@ class DownloadManager:
             # Build mangadex-dl command
             cmd = ['mangadex-dl']
             cmd.append(url)
-            cmd.extend(['--path', DOWNLOAD_DIR])
+            
+            # Set download path (append custom path to base dir if provided)
+            download_path = DOWNLOAD_DIR
+            if options and options.get('custom_path'):
+                download_path = DOWNLOAD_DIR + '/' + options['custom_path']
+            cmd.extend(['--path', download_path])
             
             # Add options
             if options:
@@ -70,6 +75,16 @@ class DownloadManager:
                     cmd.extend(['--end-chapter', str(options['end_chapter'])])
                 if options.get('no_oneshot'):
                     cmd.append('--no-oneshot')
+                if options.get('replace'):
+                    cmd.append('--replace')
+                
+                # Add filename customization options
+                if options.get('filename_chapter'):
+                    cmd.extend(['--filename-chapter', options['filename_chapter']])
+                if options.get('filename_volume'):
+                    cmd.extend(['--filename-volume', options['filename_volume']])
+                if options.get('filename_single'):
+                    cmd.extend(['--filename-single', options['filename_single']])
             
             process = subprocess.Popen(
                 cmd,
@@ -139,7 +154,12 @@ def start_download():
         'language': data.get('language', 'en'),
         'start_chapter': data.get('start_chapter'),
         'end_chapter': data.get('end_chapter'),
-        'no_oneshot': data.get('no_oneshot', False)
+        'no_oneshot': data.get('no_oneshot', False),
+        'replace': data.get('replace', False),
+        'custom_path': data.get('custom_path'),
+        'filename_chapter': data.get('filename_chapter'),
+        'filename_volume': data.get('filename_volume'),
+        'filename_single': data.get('filename_single')
     }
     
     download_id = download_manager.start_download(url, options)

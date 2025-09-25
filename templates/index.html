@@ -95,6 +95,95 @@
                                 Skip oneshot chapters
                             </label>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="replace" name="replace">
+                            <label class="form-check-label" for="replace">
+                                Replace existing files
+                            </label>
+                            <div class="form-text">Use --replace flag to overwrite existing downloads</div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Path Options -->
+                    <div class="mb-3">
+                        <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#advancedOptions" aria-expanded="false" aria-controls="advancedOptions">
+                            <i class="fas fa-cog"></i> Advanced Path Options
+                        </button>
+                    </div>
+
+                    <div class="collapse" id="advancedOptions">
+                        <div class="card card-body mb-3">
+                            <div class="mb-3">
+                                <label for="custom_path" class="form-label">Custom Download Path (Optional)</label>
+                                <input type="text" class="form-control" id="custom_path" name="custom_path" 
+                                       placeholder="e.g., ./MyManga/{manga.title}/{language.full}" value="{manga.title}"/>
+                                <div class="form-text">
+                                    Use placeholders like {manga.title}, {language.full}, {format}. Leave empty for default path.
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="filename_chapter" class="form-label">Chapter Filename (Optional)</label>
+                                        <input type="text" class="form-control" id="filename_chapter" name="filename_chapter" 
+                                               placeholder="e.g., Vol. {chapter.volume} Ch. {chapter.chapter}{file_ext}" />
+                                        <div class="form-text">For individual chapter files</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="filename_volume" class="form-label">Volume Filename (Optional)</label>
+                                        <input type="text" class="form-control" id="filename_volume" name="filename_volume" 
+                                               placeholder="e.g., {manga.title} Vol. {volume}{file_ext}" />
+                                        <div class="form-text">For volume-grouped files</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="filename_single" class="form-label">Single Filename (Optional)</label>
+                                        <input type="text" class="form-control" id="filename_single" name="filename_single" 
+                                               placeholder="e.g., {manga.title} Complete{file_ext}" />
+                                        <div class="form-text">For single combined files</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <h6>Available Placeholders:</h6>
+                                <div class="row small text-muted">
+                                    <div class="col-md-6">
+                                        <strong>Path placeholders:</strong>
+                                        <ul class="mb-2">
+                                            <li><code>{manga.title}</code> - Manga title</li>
+                                            <li><code>{manga.authors}</code> - Authors</li>
+                                            <li><code>{manga.status}</code> - Status</li>
+                                            <li><code>{language.full}</code> - Language (English)</li>
+                                            <li><code>{language.simple}</code> - Language (en)</li>
+                                            <li><code>{format}</code> - Output format</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Filename placeholders:</strong>
+                                        <ul class="mb-2">
+                                            <li><code>{chapter.chapter}</code> - Chapter number</li>
+                                            <li><code>{chapter.volume}</code> - Volume number</li>
+                                            <li><code>{chapter.title}</code> - Chapter title</li>
+                                            <li><code>{chapter.name}</code> - Full chapter name</li>
+                                            <li><code>{file_ext}</code> - File extension</li>
+                                            <li><code>{volume}</code> - Volume number</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="replace" name="replace">
+                            <label class="form-check-label" for="replace">
+                                Replace existing files
+                            </label>
+                        </div>
                     </div>
 
                     <div class="d-grid">
@@ -160,8 +249,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         
-        // Convert checkbox to boolean
+        // Convert checkboxes to boolean
         data.no_oneshot = formData.has('no_oneshot');
+        data.replace = formData.has('replace');
         
         fetch('/download', {
             method: 'POST',
