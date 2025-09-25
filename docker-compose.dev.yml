@@ -1,6 +1,3 @@
-version: '3.8'
-
-# Simple Docker Compose for development
 services:
   mangadex-web:
     build:
@@ -11,10 +8,10 @@ services:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
-      - FLASK_DEBUG=1
+      - FLASK_DEBUG=True
     volumes:
       - ./downloads:/app/downloads
-      - .:/app  # Mount source code for development
+      - .:/app
     restart: unless-stopped
     networks:
       - mangadex-network

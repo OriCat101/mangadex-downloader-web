@@ -13,8 +13,6 @@
 ### Docker (Recommended)
 1. **Clone and start:**
    ```bash
-   git clone <repository-url>
-   cd maangadx-dl-web
    docker-compose up -d
    ```
 
@@ -59,16 +57,11 @@ That's it! The application will be running with all dependencies included.
 
 ## 🐳 Docker Configuration
 ### Environment Variables
-Create a `.env` file from the example:
-```bash
-cp .env.example .env
-```
-
 Key configuration options:
 ```env
-FLASK_ENV=production
-FLASK_HOST=0.0.0.0
-FLASK_PORT=5000
+FLASK_DEBUG (defaults to False)
+FLASK_HOST (defaults to '0.0.0.0')
+FLASK_PORT (defaults to 5000)
 SECRET_KEY=your-secret-key-here (optional)
 ```
 

@@ -199,4 +199,7 @@ def settings():
     return render_template('settings.html', download_dir=DOWNLOAD_DIR)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    debug = os.environ.get('FLASK_DEBUG', 'False').lower() in ['true', '1', 'yes']
+    host = os.environ.get('FLASK_HOST', '0.0.0.0')
+    port = int(os.environ.get('FLASK_PORT', 5000))
+    app.run(debug=debug, host=host, port=port)
