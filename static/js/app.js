@@ -1,4 +1,4 @@
-// Main JavaScript for MangaDx Downloader Web UI
+// Main JavaScript for MangaDex Downloader Web UI
 
 // Utility functions
 function formatBytes(bytes, decimals = 2) {
@@ -43,7 +43,7 @@ function showNotification(message, type = 'info') {
 function validateUrl(url) {
     try {
         const urlObj = new URL(url);
-        return urlObj.hostname.includes('mangadx');
+        return urlObj.hostname.includes('mangadex');
     } catch {
         return false;
     }
@@ -169,7 +169,7 @@ window.addEventListener('offline', function() {
 });
 
 // Export for use in other scripts
-window.MangaDxUI = {
+window.MangaDexUI = {
     downloadManager,
     showNotification,
     validateUrl,

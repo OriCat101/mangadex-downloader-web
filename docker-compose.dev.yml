@@ -2,7 +2,7 @@ version: '3.8'
 
 # Simple Docker Compose for development
 services:
-  mangadx-web:
+  mangadex-web:
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,8 +17,8 @@ services:
       - .:/app  # Mount source code for development
     restart: unless-stopped
     networks:
-      - mangadx-network
+      - mangadex-network
 
 networks:
-  mangadx-network:
+  mangadex-network:
     driver: bridge
